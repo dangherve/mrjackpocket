@@ -72,7 +72,7 @@
 
 var jstpl_jack_panel=`
     <div id="jack-panel">
-        <div id="jack-character" ></div>
+        <div id="jack-character"></div>
         <div class="time-container" id="jack-winned-rounds">
             <div class="time-num" id="jack-winned-rounds-num">?</div>
             ×
