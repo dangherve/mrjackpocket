@@ -84,14 +84,14 @@ define([
 
     /*
             setup:
-            
+
             This method must set up the game user interface according to current game situation specified
             in parameters.
-            
+
             The method is called each time the game interface is displayed to a player, ie:
             _ when the game starts
             _ when a player refreshes the game page (F5)
-            
+
             "gamedatas" argument contains all datas retrieved by your "getAllDatas" PHP method.
         */
 
@@ -1055,16 +1055,16 @@ define([
       if (this.isCurrentPlayerActive()) {
         switch (
           stateName
-          /*               
+          /*
                  Example:
- 
+
                  case 'myGameState':
-                    
+
                     // Add 3 action buttons in the action status bar:
-                    
-                    this.addActionButton( 'button_1_id', _('Button 1 label'), 'onMyMethodToCall1' ); 
-                    this.addActionButton( 'button_2_id', _('Button 2 label'), 'onMyMethodToCall2' ); 
-                    this.addActionButton( 'button_3_id', _('Button 3 label'), 'onMyMethodToCall3' ); 
+
+                    this.addActionButton( 'button_1_id', _('Button 1 label'), 'onMyMethodToCall1' );
+                    this.addActionButton( 'button_2_id', _('Button 2 label'), 'onMyMethodToCall2' );
+                    this.addActionButton( 'button_3_id', _('Button 3 label'), 'onMyMethodToCall3' );
                     break;
 */
         ) {
@@ -1320,10 +1320,9 @@ define([
         .join(";");
       if (id) {
         if (isCharacter) {
-          document.styleSheets[document.styleSheets.length - 1].insertRule(
-            `#${id} { ${textStyles} }`,
-            0
-          );
+
+        element = document.getElementById(id);
+        element.style.cssText=textStyles
         } else {
           dojo.setStyle(id, styles);
         }
@@ -1790,22 +1789,22 @@ define([
     //// Player's action
 
     /*
-        
-            Here, you are defining methods to handle player's action (ex: results of mouse click on 
+
+            Here, you are defining methods to handle player's action (ex: results of mouse click on
             game objects).
-            
+
             Most of the time, these methods:
             _ check the action is possible at this game state.
             _ make a call to the game server
-        
+
         */
 
     /* Example:
-        
+
         onMyMethodToCall1: function( evt )
         {
             console.log( 'onMyMethodToCall1' );
-            
+
             // Preventing default browser reaction
             dojo.stopEvent( evt );
 
@@ -1813,25 +1812,25 @@ define([
             if( ! this.checkAction( 'myAction' ) )
             {   return; }
 
-            this.ajaxcall( "/mrjackpocket/mrjackpocket/myAction.html", { 
-                                                                    lock: true, 
-                                                                    myArgument1: arg1, 
+            this.ajaxcall( "/mrjackpocket/mrjackpocket/myAction.html", {
+                                                                    lock: true,
+                                                                    myArgument1: arg1,
                                                                     myArgument2: arg2,
                                                                     ...
-                                                                 }, 
+                                                                 },
                          this, function( result ) {
-                            
+
                             // What to do after the server call if it succeeded
                             // (most of the time: nothing)
-                            
+
                          }, function( is_error) {
 
                             // What to do after the server call in anyway (success or failure)
                             // (most of the time: nothing)
 
-                         } );        
-        },        
-        
+                         } );
+        },
+
         */
 
     ///////////////////////////////////////////////////
@@ -1839,12 +1838,12 @@ define([
 
     /*
             setupNotifications:
-            
+
             In this method, you associate each of your game notifications with your local method to handle it.
-            
+
             Note: game notification names correspond to "notifyAllPlayers" and "notifyPlayer" calls in
                   your mrjackpocket.game.php file.
-        
+
         */
     setupNotifications: function () {
       //   console.log("notifications subscriptions setup");
